@@ -24,7 +24,7 @@ syntax on
 set hlsearch
 set incsearch
 let mapleader=','
-set wildignore=.git,.next,node_modules,__pycache__,.build,.cache,compile_commands.json,*.db,*.o,.eslintrc.json,instance
+set wildignore=.git,.next,node_modules,__pycache__,.build,.cache,compile_commands.json,*.db,*.o,.eslintrc.json,instance,.DS_Store
 autocmd FileType * setlocal ts=2 sts=2 sw=2 expandtab smartindent cindent
 autocmd FileType markdown setlocal spell spelllang=en,cjk
 autocmd FileType c setlocal noexpandtab cc=80
@@ -200,23 +200,20 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:las
 
 "
 " Mapping
-"
+"  
 noremap a h
-noremap A K
-noremap r j
-noremap R <c-d>
-noremap s k
-noremap S <c-u>
-noremap t l
-noremap T J
+noremap A ^
+noremap t k
+noremap T H
+noremap s j
+noremap S L
+noremap e l
+noremap E $
 noremap f n
 noremap F N
-noremap n e
-noremap N E
-noremap e a
-noremap E A
-noremap h r
-noremap H R
+noremap n a
+noremap N A
+noremap j J
 " Cursor
 map <leader><Left> <C-w>h
 imap <leader><Left> <C-w>h
@@ -235,17 +232,17 @@ map <leader>w :w<CR>
 imap <leader>w <C-o>:w<CR>
 map <leader>C <C-w>c
 imap <leader>C <C-w>c
-map <leader>v :vsplit<CR>
-imap <leader>v <C-o>:vsplit<CR>
-map <leader>V :split<CR>
-imap <leader>V <C-o>:split<CR>
+map <leader>Z :vsplit<CR>
+imap <leader>Z <C-o>:vsplit<CR>
+map <leader>z :split<CR>
+imap <leader>z <C-o>:split<CR>
 " Buffer
 map <leader>c :call CloseBuf()<CR>
 imap <leader>c <C-[>:call CloseBuf()<CR>
-map <leader>h :bprevious<CR>
-imap <leader>h <C-o>:bprevious<CR>
-map <leader>. :bnext<CR>
-imap <leader>. <C-o>:bnext<CR>
+map <leader>a :bprevious<CR>
+imap <leader>a <C-o>:bprevious<CR>
+map <leader>e :bnext<CR>
+imap <leader>e <C-o>:bnext<CR>
 " Sizing
 map <leader>+ <C-w>5+
 imap <leader>+ <C-w>5+
@@ -269,12 +266,12 @@ imap <leader>F <C-o>zR
 " List
 map <leader>s :call CycleList('c')<CR>
 imap <leader>s :<C-o>call CycleList('c')<CR>
-map <leader>r :call CycleList('l')<CR>
-imap <leader>r :<C-o>call CycleList('l')<CR>
+map <leader>t :call CycleList('l')<CR>
+imap <leader>t :<C-o>call CycleList('l')<CR>
 map <leader>S :call ToggleList('c')<CR>
 imap <leader>S <C-o>:call ToggleList('c')<CR>
-map <leader>R :call ToggleList('l')<CR>
-imap <leader>R <C-o>:call ToggleList('l')<CR>
+map <leader>T :call ToggleList('l')<CR>
+imap <leader>T <C-o>:call ToggleList('l')<CR>
 " YCM
 map <leader>p :YcmCompleter GoToAlternateFile<CR>
 imap <leader>p <C-o>:YcmCompleter GoToAlternateFile<CR>
@@ -282,23 +279,23 @@ map <leader>G :YcmCompleter GoToReferences<CR>:call AfterYcm()<CR>
 imap <leader>G <C-o>:YcmCompleter GoToReferences<CR><C-o>:call AfterYcm()<CR>
 map <leader>g :YcmCompleter GoTo<CR>
 imap <leader>g <C-o>:YcmCompleter GoTo<CR>
-map <leader>A <Plug>(YCMFindSymbolInWorkspace)
-imap <leader>A <C-o><Plug>(YCMFindSymbolInWorkspace)
+map <leader>O <Plug>(YCMFindSymbolInWorkspace)
+imap <leader>O <C-o><Plug>(YCMFindSymbolInWorkspace)
 nmap <leader><Space> <plug>(YCMHover)
 " Nerdtree
-nmap <leader>a :NERDTreeToggle<CR>
-let g:NERDTreeMenuUp='s'
-let g:NERDTreeMenuDown='r'
+nmap <leader>o :NERDTreeToggle<CR>
+let g:NERDTreeMenuUp='t'
+let g:NERDTreeMenuDown='s'
 let g:NERDTreeMapRefresh='a'
-let g:NERDTreeMapCustomOpen='t'
+let g:NERDTreeMapCustomOpen='e'
 " Etc
 map <leader>m :noh<CR>
 imap <leader>m <C-o>:noh<CR>
-map <leader>x g;
-imap <leader>x <C-o>g;
-map <leader>X g,
-imap <leader>X <C-o>g,
-map <leader>z <C-o>
-imap <leader>z <C-o><C-o>
-map <leader>Z <C-i>
-imap <leader>Z <C-o><C-i>
+map <leader>u g;
+imap <leader>u <C-o>g;
+map <leader>U g,
+imap <leader>U <C-o>g,
+map <leader>b <C-o>
+imap <leader>b <C-o><C-o>
+map <leader>B <C-i>
+imap <leader>B <C-o><C-i>

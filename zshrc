@@ -15,11 +15,10 @@ source $ZSH/oh-my-zsh.sh
 alias vi='vim'
 alias rm='trash'
 alias ls="${aliases[ls]}"
-#--group-directories-first"
 alias ll='ls -lah'
 alias l='ls -lh'
 alias python='python3'
-cd() { builtin cd "$@"; l; }
+cd() { builtin cd "$@"; ls; }
 
 
 update() {
