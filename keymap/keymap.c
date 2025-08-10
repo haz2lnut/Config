@@ -16,19 +16,19 @@ enum my_keycodes {
 };
 
 #define LOWER OSL(_LOWER)
-#define RAISE OSL(_RAISE)
+#define RAISE LT(_RAISE, KC_SPC)
 #define ADJUST MO(_ADJUST)
 #define TABADJ LT(_ADJUST, KC_TAB)
 #define BSPCSFT SFT_T(KC_BSPC)
-#define SPCSFT SFT_T(KC_SPC)
 #define TMUX C(KC_B)
+#define GLOBE C(G(KC_SPC))
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_BASE] = LAYOUT(
 			KC_Q,    KC_F,    KC_G,    KC_Y,    KC_AT,                     KC_GRV,  KC_V,    KC_X,    KC_H,    KC_W,
 			KC_A,    KC_S,    KC_T,    KC_E,    KC_J,                      KC_Z,    KC_N,    KC_I,    KC_R,    KC_C,
 			KC_K,    KC_M,    KC_D,    KC_O,    KC_ENT,  _______, _______, KC_COMM, KC_P,    KC_U,    KC_L,    KC_B,
-			OS_LGUI, OS_LALT, OS_LCTL, RAISE,   LOWER,   LANG1,   LANG2,   SPCSFT,  BSPCSFT, OS_RCTL, OS_RALT, OS_RGUI
+			OS_LGUI, OS_LALT, OS_LCTL, BSPCSFT, RAISE,   LANG1,   LANG2,   LOWER,   OS_RSFT, OS_RCTL, OS_RALT, OS_RGUI
 			),
 
 	[_QWERTY] = LAYOUT(
@@ -42,14 +42,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			KC_LBRC, KC_LCBR, KC_RCBR, KC_RBRC, KC_DLR,                    KC_CIRC, KC_HASH, KC_ASTR, KC_SLSH, KC_BSLS,
 			KC_LT,   KC_PLUS, KC_MINS, KC_GT,   KC_AMPR,                   KC_PIPE, KC_EQL,  KC_UNDS, KC_DQT,  KC_DOT,
 			KC_QUES, KC_LPRN, KC_RPRN, KC_SCLN, KC_ESC,  _______, _______, TMUX,    KC_COLN, KC_PERC, KC_QUOT, KC_EXLM,
-			KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, _______, KC_TAB,  KC_DEL, _______, _______, _______
+			_______, _______, _______, KC_DEL,  TABADJ,  GLOBE,   _______, _______, KC_LEFT, KC_UP,   KC_DOWN, KC_LEFT
 			),
 
 	[_RAISE] = LAYOUT(
 			KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_BRIU,                   S(KC_E), KC_7,    KC_8,    KC_9,    S(KC_F),
 			KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_MPLY,                   S(KC_C), KC_4,    KC_5,    KC_6,    S(KC_D),
 			KC_MRWD, KC_VOLD, KC_VOLU, KC_MFFD, KC_BRID, _______, _______, S(KC_A), KC_1,    KC_2,    KC_3,    S(KC_B),
-			_______, _______, _______, _______, ADJUST,  _______, _______, _______, KC_DOT,  KC_0,    HEX1,    HEX2
+			_______, _______, _______, _______, _______, _______, _______, ADJUST,  KC_DOT,  KC_0,    HEX1,    HEX2
 			),
 
 	[_ADJUST] = LAYOUT(
