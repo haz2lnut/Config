@@ -24,7 +24,7 @@ syntax on
 set hlsearch
 set incsearch
 let mapleader=','
-set wildignore=.git,.next,node_modules,__pycache__,.build,.cache,compile_commands.json,*.db,*.o,.eslintrc.json,instance,.DS_Store
+set wildignore=.git,.next,node_modules,__pycache__,.build,.cache,compile_commands.json,*.db,*.o,.eslintrc.json,instance
 autocmd FileType * setlocal ts=2 sts=2 sw=2 expandtab smartindent cindent
 autocmd FileType markdown setlocal spell spelllang=en,cjk
 autocmd FileType c setlocal noexpandtab cc=80
@@ -35,7 +35,6 @@ autocmd BufRead,BufNewFIle *.s setlocal filetype=asm
 set autowriteall
 autocmd BufLeave,BufWinLeave,InsertLeave,CmdlineEnter * if &filetype != 'nerdtree' && &modifiable && filereadable(bufname('%')) | silent! w | endif
 set backspace=indent,eol,start
-
 
 
 "
@@ -184,6 +183,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " Auto location list
 let g:ycm_always_populate_location_list = 1
 
+
 "
 " Folding
 "
@@ -200,7 +200,7 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:las
 
 "
 " Mapping
-"  
+"
 noremap a h
 noremap A ^
 noremap t k
@@ -209,10 +209,10 @@ noremap s j
 noremap S L
 noremap e l
 noremap E $
-noremap f n
-noremap F N
 noremap n a
 noremap N A
+noremap f n
+noremap F N
 noremap j J
 " Cursor
 map <leader><Left> <C-w>h
@@ -283,7 +283,8 @@ map <leader>O <Plug>(YCMFindSymbolInWorkspace)
 imap <leader>O <C-o><Plug>(YCMFindSymbolInWorkspace)
 nmap <leader><Space> <plug>(YCMHover)
 " Nerdtree
-nmap <leader>o :NERDTreeToggle<CR>
+map <leader>o :NERDTreeToggle<CR>
+imap <leader>o <C-o>:NERDTreeToggle<CR>
 let g:NERDTreeMenuUp='t'
 let g:NERDTreeMenuDown='s'
 let g:NERDTreeMapRefresh='a'
