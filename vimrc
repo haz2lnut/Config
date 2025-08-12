@@ -264,14 +264,14 @@ imap <leader>f <C-o>za
 map <leader>F zR
 imap <leader>F <C-o>zR
 " List
-map <leader>s :call CycleList('c')<CR>
-imap <leader>s :<C-o>call CycleList('c')<CR>
-map <leader>t :call CycleList('l')<CR>
-imap <leader>t :<C-o>call CycleList('l')<CR>
-map <leader>S :call ToggleList('c')<CR>
-imap <leader>S <C-o>:call ToggleList('c')<CR>
-map <leader>T :call ToggleList('l')<CR>
-imap <leader>T <C-o>:call ToggleList('l')<CR>
+map <leader>t :call CycleList('c')<CR>
+imap <leader>t :<C-o>call CycleList('c')<CR>
+map <leader>s :call CycleList('l')<CR>
+imap <leader>s :<C-o>call CycleList('l')<CR>
+map <leader>T :call ToggleList('c')<CR>
+imap <leader>T <C-o>:call ToggleList('c')<CR>
+map <leader>S :call ToggleList('l')<CR>
+imap <leader>S <C-o>:call ToggleList('l')<CR>
 " YCM
 map <leader>p :YcmCompleter GoToAlternateFile<CR>
 imap <leader>p <C-o>:YcmCompleter GoToAlternateFile<CR>
