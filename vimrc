@@ -221,22 +221,22 @@ function! Mapmap(lhs, rhs)
   execute 'map '.a:lhs.' '.a:rhs
   execute 'imap '.a:lhs.' <Esc>'.a:rhs
 endfunction
-" Arrow
+" Cursor
 noremap a h
-noremap A B
+noremap A ^
 noremap s j
-noremap S <C-d>
+noremap S L
 noremap t k
-noremap T <C-u>
+noremap T H
 noremap e l
-noremap E W
+noremap E $
 " Mode
 noremap r a
 noremap R A
 noremap n o
 noremap N O
 noremap x s
-noremap X S
+noremap X R
 noremap v V
 noremap V v
 " Operation
@@ -245,22 +245,22 @@ noremap M C
 noremap c y
 noremap C Y
 " Motion
-noremap w w
-noremap W b
-noremap k f
-noremap K F
+noremap o w
+noremap O W
+noremap k b
+noremap K B
 noremap h n
 noremap H N
 " Etc
-noremap q :w<CR>
+noremap w :w<CR>
 noremap f za
 noremap F zR
-noremap y @
-noremap Y g
+noremap q @
+noremap Q q
 noremap j :join!<CR>
 noremap J :.-1join!<CR>
-noremap o "
-noremap O :registers<CR>
+noremap y "
+noremap Y :registers<CR>
 noremap U <C-r>
 noremap l :call CycleList('l', 'n')<CR>
 noremap L :call CycleList('l', 'p')<CR>
@@ -270,9 +270,9 @@ noremap <Space> o<Esc>
 noremap <Backspace> X
 noremap ( [(
 noremap ) ])
-noremap { [{
-noremap } ]}
-noremap . %
+noremap < [{
+noremap > ]}
+noremap ; %
 
 " Cursor
 call Mapmap('<Leader><Left>',  '<C-w>h')

@@ -38,26 +38,22 @@ update() {
 }
 
 keebuild() {
-  [[ $# -eq 1 && ( $1 == 'left' || $1 == 'right' ) ]] || {
-    echo "Usage: $0 [left|right]" return 1
-  }
-  FIRMWARE="$HOME/firmware/nice_view-corne_choc_pro_$1-zmk.uf2"
+  QMK_PATH=$HOME/.qmk
+  KEYMAP_PATH=$QMK_PATH/keyboards/keyboardio/atreus/keymaps/haz2lnut
 
-  DEV=$(lsblk -o NAME,LABEL -nr | awk '$2=="KEEBART" {print $1; exit}')
-  if [[ -n $DEV ]]; then
-    MNT=/mnt
-    sudo mount "/dev/$DEV" /mnt
-    sudo cp "$FIRMWARE" /mnt
-    sudo umount /mnt
-    echo 'done'
-  else
-    echo 'WTF'
-  fi
+  pushd $QMK_PATH
+  git pull
+  command cp -a $CONFIG_PATH/keymap $KEYMAP_PATH
+  sudo qmk flash -kb keyboardio/atreus -km haz2lnut
+  command rm -rf $KEYMAP_PATH
+  sudo rm -rf $QMK_PATH/.build
+  popd
 }
 
 keebedit() {
-  vi $HOME/.keeb
+  vi $CONFIG_PATH/keymap
 }
+
 
 mkvenv() {
   python -m venv $CONFIG_PATH/venv/$1
