@@ -267,7 +267,7 @@ noremap L :call CycleList('l', 'p')<CR>
 noremap b g;
 noremap B g,
 noremap <Space> o<Esc>
-noremap <Backspace> X
+noremap <Backspace> x
 noremap ( [(
 noremap ) ])
 noremap < [{
@@ -309,7 +309,7 @@ call Mapmap('<Leader>r', ':YcmCompleter GoToReferences<CR>:call AfterYcm()<CR>')
 call Mapmap('<Leader>g', ':YcmCompleter GoTo<CR>')
 call Mapmap('<Leader>f', '<Plug>(YCMFindSymbolInWorkspace)')
 " Nerdtree
-call Mapmap('<Leader>n', ':NERDTreeToggle<CR>')
+call Mapmap('<Leader>o', ':NERDTreeToggle<CR>')
 let g:NERDTreeMenuUp='t'
 let g:NERDTreeMenuDown='s'
 let g:NERDTreeMapRefresh='a'

@@ -16,16 +16,16 @@ enum my_keycodes {
 
 #define LOWER LT(_LOWER, KC_SPC)
 #define RAISE OSL(_RAISE)
-#define ZRADJ LT(_ADJUST, KC_0)
-#define ESCADJ LT(_ADJUST, KC_ESC)
+#define DOTADJ LT(_ADJUST, KC_DOT)
+#define TABADJ LT(_ADJUST, KC_TAB)
 #define TMUX C(KC_B)
 #define L0CK TG(_L0CK)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_HZ2LUT] = LAYOUT(
-			KC_Q,    KC_F,    KC_G,    KC_Y,    XXXXXXX,                   XXXXXXX, KC_V,    KC_X,    KC_H,    KC_W,
-			KC_A,    KC_S,    KC_T,    KC_E,    XXXXXXX,                   XXXXXXX, KC_N,    KC_I,    KC_R,    KC_C,
-			KC_K,    KC_M,    KC_D,    KC_O,    XXXXXXX, L0CK,    L0CK,    XXXXXXX, KC_P,    KC_U,    KC_L,    KC_B,
+			KC_Q,    KC_F,    KC_G,    KC_Y,    KC_DLR,                    KC_CIRC, KC_V,    KC_X,    KC_H,    KC_W,
+			KC_A,    KC_S,    KC_T,    KC_E,    KC_J,                      KC_Z,    KC_N,    KC_I,    KC_R,    KC_C,
+			KC_K,    KC_M,    KC_D,    KC_O,    KC_GRV,  L0CK,    L0CK,    KC_AT,   KC_P,    KC_U,    KC_L,    KC_B,
 			XXXXXXX, XXXXXXX, XXXXXXX, KC_BSPC, LOWER,   LANG1,   LANG2,   RAISE,   OS_LSFT, OS_LCTL, OS_LALT, OS_LGUI
 			),
 
@@ -37,24 +37,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 			),
 
 	[_LOWER] = LAYOUT(
-			KC_CIRC, KC_AT,   KC_PERC, KC_BSLS, _______,                   _______, KC_7,    KC_8,    KC_9,    KC_DLR, 
-			KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,                   _______, KC_4,    KC_5,    KC_6,    KC_TILD,
-			KC_LBRC, KC_LCBR, KC_RCBR, KC_RBRC, _______, _______, _______, _______, KC_1,    KC_2,    KC_3,    KC_GRV,
-			_______, _______, _______, KC_DEL,  _______, _______, _______, ZRADJ,   TMUX,    _______, _______, _______
+			KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_BRIU,                   KC_SLSH, KC_7,    KC_8,    KC_9,    KC_MINS,
+			KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_MPLY,                   KC_ASTR, KC_4,    KC_5,    KC_6,    KC_PLUS,
+			KC_MRWD, KC_VOLD, KC_VOLU, KC_MFFD, KC_BRID, _______, _______, KC_EQL,  KC_1,    KC_2,    KC_3,    KC_0,
+			_______, _______, _______, KC_DEL,  _______, _______, _______, DOTADJ,  CW_TOGG, _______, _______, _______
 			),
 
 	[_RAISE] = LAYOUT(
-			KC_QUES, KC_PIPE, KC_AMPR, KC_HASH, _______,                   _______, KC_COLN, KC_QUOT, KC_DQT,  KC_EXLM,
-			KC_J,    KC_LPRN, KC_RPRN, KC_SCLN, _______,                   _______, KC_DOT,  KC_COMM, KC_UNDS, KC_Z,   
-			KC_LT,   KC_SLSH, KC_MINS, KC_GT,   _______, _______, _______, _______, KC_EQL,  KC_PLUS, KC_ASTR, KC_TAB,
-			_______, _______, _______, KC_ENT,  ESCADJ,  _______, _______, _______, CW_TOGG, _______, _______, _______
+			KC_TILD, KC_ASTR, KC_SLSH, KC_LCBR, KC_LBRC,                   KC_RBRC, KC_RCBR, KC_QUOT, KC_DQT,  KC_COLN,
+			KC_DOT,  KC_LPRN, KC_RPRN, KC_SCLN, KC_EXLM,                   KC_QUES, KC_COMM, KC_UNDS, KC_EQL,  KC_ESC,
+			KC_LT,   KC_PLUS, KC_MINS, KC_GT,   KC_BSLS, _______, _______, KC_PIPE, KC_AMPR, KC_PERC, KC_HASH, KC_ENT,
+			_______, _______, _______, TMUX,    TABADJ,  _______, _______, _______, _______, _______, _______, _______
 			),
 
 	[_ADJUST] = LAYOUT(
-			DM_RSTP, KC_BRID, KC_BRIU, KC_MPLY, _______,                   _______, KC_F7,   KC_F8,   KC_F9,   KC_F12,
-			KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______,                   _______, KC_F4,   KC_F5,   KC_F6,   KC_F11,
-			KC_MRWD, KC_VOLD, KC_VOLU, KC_MFFD, _______, _______, _______, _______, KC_F1,   KC_F2,   KC_F3,   KC_F10,
-			DM_PLY1, DM_REC1, KC_INS,  _______, _______, _______, _______, _______, _______, KC_CAPS, DM_REC2, DM_PLY2
+			KC_INS,  DM_RSTP, DM_REC2, DM_REC1, _______,                   KC_F15,  KC_F7,   KC_F8,   KC_F9,   KC_F12,
+			KC_CAPS, _______, DM_PLY2, DM_PLY1, _______,                   KC_F14,  KC_F4,   KC_F5,   KC_F6,   KC_F11,
+			KC_DEL,  _______, _______, _______, _______, _______, _______, KC_F13,  KC_F1,   KC_F2,   KC_F3,   KC_F10,
+			_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 			),
 
 	[_L0CK] = LAYOUT(
